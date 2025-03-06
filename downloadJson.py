@@ -5,22 +5,8 @@ import urllib.parse
 
 import requests
 
-# import http.client
-# import logging
 
-# # 启用 HTTP 请求的日志记录
-# http.client.HTTPConnection.debuglevel = 1
-#
-# # 配置日志记录
-# logging.basicConfig()
-# logging.getLogger().setLevel(logging.DEBUG)
-# requests_log = logging.getLogger("requests.packages.urllib3")
-# requests_log.setLevel(logging.DEBUG)
-# requests_log.propagate = True
-
-
-
-def download_jsons(weekRange,id,SessionId,server):
+def download_jsons(weekRange,id,SessionId,server,year_semester):
     url = f"https://jwgls{server}.cust.edu.cn/api/ClientStudent/QueryService/OccupyQueryApi/QueryScheduleData"  # 请替换为实际的 API 端点
     cookies = {
         "ASP.NET_SessionId": SessionId,
@@ -30,27 +16,16 @@ def download_jsons(weekRange,id,SessionId,server):
     headers = {
         "Content-Type": "application/json;charset=utf-8",  # 或者 "application/json"，视情况而定
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 YaBrowser/25.2.0.0 Safari/537.36",
-        # 模拟浏览器
         "Accept-Encoding": "gzip, deflate, br, zstd",
         "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
         "Accept": "application/json, text/plain, */*",
-        # "Origin": "https://jwgls0.cust.edu.cn",
-        # "dnt": "1",
-        # "sec-ch-ua": '"Not A(Brand";v="8", "Chromium";v="132", "YaBrowser";v="25.2", "Yowser";v="2.5"',
-        # "sec-ch-ua-mobile": "?0",
-        # "sec-ch-ua-platform": '"Windows"',
-        # "sec-gpc": "1"  ,
-        # "Sec-Fetch-Dest": "empty",
-        # "Sec-Fetch-Mode": "cors",
-        # "Sec-Fetch-Site": "same-origin"
-
     }
     for i in weekRange:
 
         param = {
             "KBLX": "2",  # 课表类型
             "CXLX": "1",  # 查询类型
-            "XNXQ": "20242",  # 学年学期
+            "XNXQ": year_semester,  # 学年学期
             "CXID": id,  # 查询ID
             "CXZC": str(i),  # 查询周次
             "JXBLXs": [

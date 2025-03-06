@@ -14,6 +14,9 @@ server = 3
 # 周数
 weekRange = range(0,21)
 
-download_jsons(weekRange,PersonalId,SessionId, server)
+# 学年学期
+year_semester = "20242"
+
+download_jsons(weekRange,PersonalId,SessionId, server, year_semester)
 data_filter(weekRange)
 to_ics("all_lessons")
