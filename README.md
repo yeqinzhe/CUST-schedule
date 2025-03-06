@@ -14,4 +14,10 @@
 
 5.学年学期的第一学期为九月学的学期
 
-请注意，个人id是固定的，SessionId则会过期
+请注意，个人id是固定的，SessionId则会过期!
+
+电脑段日历
+![Alt text](screenshot/browser_Ujk2qvm3SX.png)
+
+手机端日历
+(![Screenshot_20250306_132745_One UI Home.jpg](screenshot/Screenshot_20250306_132745_One%20UI%20Home.jpg)images/image.png)
